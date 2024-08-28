@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import classNames from "classnames";
 
 interface CreateFormModalProps {
   onCreate: (formName: string) => void;
@@ -29,13 +28,11 @@ const CreateFormModal: React.FC<CreateFormModalProps> = ({
         <div className="px-6">
           <input
             type="text"
-            className={classNames(
-              "w-full border-2 border-x-transparent border-t-transparent pb-1 pt-4 outline-none focus:border-b-black",
-              {
-                "border-b-red-600": error,
-                "border-b-[#0000006B] border-opacity-[42]": !error,
-              },
-            )}
+            className={`w-full border-2 border-x-transparent border-t-transparent pb-1 pt-4 outline-none focus:border-b-black ${
+              error
+                ? "border-b-red-600"
+                : "border-b-[#0000006B] border-opacity-[42]"
+            }`}
             placeholder="Enter your form name"
             value={formName}
             onChange={(e) => {
